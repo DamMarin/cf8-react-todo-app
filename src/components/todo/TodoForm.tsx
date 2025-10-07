@@ -14,7 +14,6 @@ const TodoForm = ({ addTodo, inputRef }: TodoFormProps) => {
     if (text.trim() !== ""){
       addTodo(text);
       setText("");
-      inputRef.current?.focus();
     }
   }
 
