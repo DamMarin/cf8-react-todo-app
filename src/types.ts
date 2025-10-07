@@ -16,6 +16,12 @@ export type TodoListProps = {
   toggleTodo: (id: number) => void;
 }
 
+export type TodoStatsProps = {
+  total: number;
+  active: number;
+  completed: number;
+}
+
 export type ButtonProps = {
   onClick?: () => void;
   disabled?: boolean;

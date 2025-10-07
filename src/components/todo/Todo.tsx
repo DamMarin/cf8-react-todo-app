@@ -2,6 +2,7 @@ import {useState, useRef} from "react";
 import TodoForm from "./TodoForm.tsx";
 import type {TodoProps} from "../../types.ts";
 import TodoList from "./TodoList.tsx";
+import TodoStats from "./TodoStats.tsx";
 
 const Todo = () => {
   const [todos, setTodos] = useState<TodoProps[]>([]);
@@ -35,6 +36,9 @@ const Todo = () => {
     );
   };
 
+  const totalTasks = todos.length;
+  const completedTasks = todos.filter(t => t.completed).length;
+  const activeTasks = totalTasks - completedTasks;
 
   return (
     <>
@@ -52,15 +56,15 @@ const Todo = () => {
           toggleTodo={toggleTodo}
         />
 
-        {/*  Component: TodoStats */}
+        {totalTasks > 0 && (
+          // Component: TodoStats
+          <TodoStats
+            total={totalTasks}
+            active={activeTasks}
+            completed={completedTasks}
+          />
+        )}
         {/*  Component: Button */}
-
-        {/*[*/}
-        {/*{"id":1759763950197,"text":"task 1","completed":false},*/}
-        {/*{"id":1759765990983,"text":"newText","completed":false},*/}
-        {/*{"id":1759763950197,"text":"Task 3","completed":false}*/}
-        {/*]*/}
-
       </div>
     </>
   );
